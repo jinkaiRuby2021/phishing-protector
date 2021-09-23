@@ -1,0 +1,38 @@
+h3 {
+    margin: 20px 0 20px 0;
+}
+
+h5 {
+    border-left: 7px solid #6E6E6E;
+    border-bottom: 1px solid #6E6E6E;
+    padding: 0 0 0 5px;
+    margin: 0 0 20px 0;
+}
+
+div#alert-div {
+    margin: 10px 0px 20px 0px;
+}
+
+div#form-div {
+    background-color: #E6E6E6;
+    padding: 20px 30px;
+    margin: 25px 0px 25px 0px;
+    border-radius: 10px;
+}
+
+i[id^="editButton"] {
+    cursor: pointer;
+}
+
+i[id^="deleteButton"] {
+    cursor: pointer;
+    color: red;
+}
+
+i[id^="editCompleteButton"] {
+    cursor: pointer;
+}
+
+i[id^="editBackButton"] {
+    cursor: pointer;
+}
