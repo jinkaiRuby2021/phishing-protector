@@ -5,13 +5,6 @@ $(function(){
   const maxLengthComment = 50; // 入力できるコメントの文字数
   const maxLengthData = 1000; // storageに保存できるデータ数
 
-  // SHA-256のハッシュ関数(初期化)
-  hash = function(bace){
-    const shaobj = new jsSHA("SHA-256","TEXT");
-    shaobj.update(bace);
-    return shaobj.getHash("HEX");
-  }
-
   // 保存されているクレデンシャル情報を取得する
   chrome.storage.local.get(["Info"], function (value) {
     // グローバル変数にデータを格納して，HTML上に表示
@@ -127,6 +120,13 @@ $(function(){
       }
     });
     return flag;
+  }
+
+  // SHA-256のハッシュ関数
+  function hash(bace){
+    const shaobj = new jsSHA("SHA-256","TEXT");
+    shaobj.update(bace);
+    return shaobj.getHash("HEX");
   }
 
   // 全てのクレデンシャル情報をTableに表示する
