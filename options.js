@@ -1,6 +1,11 @@
 $(function(){
+  let credentialInfo; // クレデンシャル情報を保持する配列
+  const tags = ["CreditCard", "Name", "Address", "etc"]; // タグの種類を保持する配列
+  const tagColors = ["primary", "secondary", "success", "light"] // タグの色を保持する配列
+  const maxLengthComment = 50; // 入力できるコメントの文字数
+  const maxLengthData = 1000; // storageに保存できるデータ数
+
   // 保存されているクレデンシャル情報を取得する
-  let credentialInfo;
   chrome.storage.local.get(["Info"], function (value) {
     // グローバル変数にデータを格納して，HTML上に表示
     credentialInfo = value.Info;
@@ -14,14 +19,19 @@ $(function(){
   $('#addButton').click(function(e) {
     // submitの効果を無くす
     e.preventDefault();
+    let beforeData = $('#inputData').val();
+    let hashedData = hash(beforeData);
 
-    // 必須事項が入力されていなかった場合
-    if($('#inputData').val() == ''){
-      // addできたことを伝えるアラートを表示
+    // 保存できるデータ数の上限を超えてしまう場合
+    if(credentialInfo.length == maxLengthData){
+      printAlert("danger", "Could not be added <strong>because the maximum amount of data that can be saved has been exceeded</strong>.");
+    } else if(beforeData == ''){ // 必須事項が入力されていなかった場合
       printAlert("danger", "Failed to add because <strong>required fields</strong> were not filled in. Please check.");
+    } else if(includeSameData(hashedData)){ // すでに登録済みのデータに対する追加リクエストが来たとき
+      printAlert("danger", "The data has already been <strong>registered</strong>.");
     } else {
       // 入力フォームの値を配列にしてcredentialInfo(2次元配列の形式)に追加
-      let addInfo = {data: $('#inputData').val(), tag: $('#inputTag').val(), comment: $('#inputComment').val()};
+      let addInfo = {data: hashedData, tag: $('#inputTag').val(), comment: $('#inputComment').val()};
       credentialInfo.push(addInfo);
   
       // localStorageに保存
@@ -97,6 +107,28 @@ $(function(){
     addTableItem(itemId, credentialInfo[itemId]);
   });
 
+  // dataと同じCredentialDataがすでに登録済みかどうかを判定する
+  function includeSameData(data) {
+    let flag = false;
+    $.each(credentialInfo, function(index, val) {
+      //console.log(val.data);
+      //console.log(data);
+      //console.log(val.data == data);
+      if(val.data == data){
+        flag = true;
+        return false;
+      }
+    });
+    return flag;
+  }
+
+  // SHA-256のハッシュ関数
+  function hash(bace){
+    const shaobj = new jsSHA("SHA-256","TEXT");
+    shaobj.update(bace);
+    return shaobj.getHash("HEX");
+  }
+
   // 全てのクレデンシャル情報をTableに表示する
   function printCredentialTable(info) {
     $.each(info, function(index, val) {
@@ -117,8 +149,8 @@ $(function(){
 
   // 指定されたクレデンシャル情報のセルをTableに追加する
   function addTableItem(index, val) {
-    $('#tableItem' + index).append('<td class="align-middle"><span class="badge badge-success">' + val.tag + '</span></td>' +
-                                   '<td class="align-middle">' + val.data + '</td>' + 
+    $('#tableItem' + index).append('<td class="align-middle">' + createTagBadge(val.tag) + '</td>' +
+                                   '<td class="align-middle">' + omitHashedData(val.data) + '</td>' + 
                                    '<td class="align-middle">' + val.comment + '</td>' + 
                                    '<td class="align-middle"><i class="fas fa-edit" id="editButton'+ index +'"></i></td>' + 
                                    '<td class="align-middle"><i class="fas fa-trash" id="deleteButton'+ index +'"></i></td>');
@@ -127,17 +159,32 @@ $(function(){
   // 指定されたクレデンシャル情報のセル(編集バージョン)をTableに追加する
   function addEditItem(index, val) {
     $('#tableItem' + index).append('<td class="align-middle">' + createSelectedForm(index, val.tag) + '</td>' + 
-                                   '<td class="align-middle">' + val.data + '</td>' + 
-                                   '<td class="align-middle"><input type="text" class="form-control" id="editComment' + index + '" value=' + val.comment +'></td>' + 
+                                   '<td class="align-middle">' + omitHashedData(val.data) + '</td>' + 
+                                   '<td class="align-middle"><input type="text" class="form-control" id="editComment' + index + '" value=' + val.comment +' maxlength="' + maxLengthComment + '"></td>' + 
                                    '<td class="align-middle"><i class="fas fa-check" id="editCompleteButton'+ index +'"></i></td>' + 
                                    '<td class="align-middle"><i class="fas fa-times" id="editBackButton'+ index +'"></i></td>');
   }
 
+  // ハッシュ化されたデータを省略した文字列を生成する
+  function omitHashedData(data) {
+    return data.substr(0, 5) + ' ... ' + data.substr(-5);
+  }
+
+  // tagのバッジを作成する
+  function createTagBadge(tag) {
+    let str;
+    $.each(tags, function(i,value) {
+      if(tag == value){
+        str = '<span class="badge badge-' + tagColors[i] + '">' + tag + '</span>'
+      }
+    });
+    return str;
+  }
+
   // selectの入力フォームを作成する
   function createSelectedForm(index, val) {
-    let selecter = ["CreditCard", "Name", "Address", "Etc"];
     let str = '<select class="form-control" id="editTag' + index +'">';
-    $.each(selecter, function(i, value) { 
+    $.each(tags, function(i, value) { 
       if(val == value) {
         str = str + '<option selected>' + value + '</option>'
       } else {
