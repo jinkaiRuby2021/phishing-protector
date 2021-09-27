@@ -7,7 +7,7 @@
     {
       "run_at":"document_end",
       "matches":["<all_urls>"],
-      "js": ["jquery-3.6.0.min.js","content.js"]
+      "js": ["resource/jquery-3.6.0.min.js","content.js"]
     }
   ],
   "background": {
@@ -31,10 +31,4 @@
     "128": "/images/get_started128.png"
   },
   "options_page": "options.html"
-<<<<<<< Updated upstream
 }
-=======
-  
-}
-
->>>>>>> Stashed changes
