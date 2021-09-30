@@ -1,7 +1,7 @@
 $(function(){
   let credentialInfo; // クレデンシャル情報を保持する配列
-  const tags = ["CreditCard", "Name", "Address", "etc"]; // タグの種類を保持する配列
-  const tagColors = ["primary", "secondary", "success", "light"] // タグの色を保持する配列
+  const tags = ["CreditCard", "Name", "Address", "TelNumber", "EmailAddress", "Affiliation", "etc"]; // タグの種類を保持する配列
+  const tagColors = ["primary", "secondary", "success", "info", "warning", "dark", "light"] // タグの色を保持する配列
   const maxLengthComment = 50; // 入力できるコメントの文字数
   const maxLengthData = 1000; // storageに保存できるデータ数
 
@@ -9,6 +9,9 @@ $(function(){
   chrome.storage.local.get(["Info"], function (value) {
     // グローバル変数にデータを格納して，HTML上に表示
     credentialInfo = value.Info;
+    if(credentialInfo == undefined){
+      credentialInfo = [];
+    }
     printCredentialTable(credentialInfo);
 
     // デバッグ
