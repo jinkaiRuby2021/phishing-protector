@@ -7,7 +7,8 @@
     {
       "run_at":"document_end",
       "matches":["<all_urls>"],
-      "js": ["resource/jquery-3.6.0.min.js","content.js"]
+      "js": ["resource/jquery-3.6.0.min.js","content.js"],
+      "all_frames": true
     }
   ],
   "background": {
