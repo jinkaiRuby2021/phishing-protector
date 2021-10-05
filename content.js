@@ -1,4 +1,5 @@
 $(function(){
+    
     //inputタグに文字が入力されるたびにイベントが発火
     $("body").on('input', "input", function(event){
         //入力値のハッシュと，保存されているクレデンシャルのハッシュを比較
@@ -7,8 +8,8 @@ $(function(){
         if(false){
            alert("保存されたクレデンシャル情報と入力値が一致しました．"); 
         }
-        console.log(event.currentTarget.value);
-    
+        //console.log(event.currentTarget.value);
+        Alert("保存されたクレデンシャル情報と入力値が一致しました．"); 
     });
 
     
@@ -56,11 +57,17 @@ $(function(){
 
             //クレデンシャル情報が入力されているのを確認出来たら，アラートを表示する
             if(credential){
-                alert("以下のクレデンシャル情報を入力しようとしています．\n"+credential);
+                Alert("以下のクレデンシャル情報を入力しようとしています．\n"+credential);
                 flag = true;
             }
-                
-            
         }
     });
+
+    function Alert(sentence){
+        let protocol =  $(location).attr('protocol');
+        if(protocol.match(/http:/) != null){
+            sentence = sentence + "\nスキームがhttpです．";
+        }
+        alert(sentence);
+    }
 });
