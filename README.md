@@ -7,13 +7,13 @@ Is your PC really safe? Are you visitting bad sites?
 This prevents your PC from getting caught on phishing sites by alerting.
 
 
-# INSTALLATION
+## INSTALLATION
 You download all package of "phishing-protector" and save it on an arbitrary place.
 Then you load the file to google extensions from "Load unpackaged extensions"
 picrture
 
 
-# FEATURES
+## FEATURES
 First, when you enter personal information, this system display warning to encourage confirmation that sites you visit is wheather legitimate or phishing
 
 Second, if you set up option in advance, this show alert by matching contents of option and what you are typing.
@@ -21,7 +21,7 @@ Second, if you set up option in advance, this show alert by matching contents of
 Finaly, if sites you visit don't support ssl, this show alert.
 
 
-# Way to Use
+## Way to Use
 When you open options screen, you can check the three input forms. Important forms are "Date" and "Tag".
 
 Form of "Tag" have 7 elements: CreditCard, Name, Address, TelNumber, EmailAddress, Affiliation and etc.
