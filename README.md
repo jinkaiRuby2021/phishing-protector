@@ -11,7 +11,6 @@ This prevents your PC from getting caught on phishing sites by alerting.
 ## INSTALLATION
 You download all package of "phishing-protector" and save it on an arbitrary place.
 Then you load the file to google extensions from "Load unpackaged extensions"
-picrture
 
 
 ## FEATURES
@@ -23,10 +22,8 @@ Finaly, if sites you visit don't support ssl, this show alert.
 
 
 ## Way to Use
-When you open options screen, you can check the three input forms. Important forms are "Date" and "Tag".
+When you open options screen, you can check the three input forms. Important forms are "Date" and "Tag". 
 
-Form of "Tag" have 7 elements: CreditCard, Name, Address, TelNumber, EmailAddress, Affiliation and etc.
-
-In "Data", You enter information about Tag that you choose.
-
+Form of "Tag" have 7 elements: CreditCard, Name, Address, TelNumber, EmailAddress, Affiliation and etc.  
+In "Data", You enter information about Tag that you choose.  
 Then you push "Add" and it is complete.
