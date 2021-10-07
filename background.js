@@ -6,7 +6,7 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  if (request === "getLocalStorage"){
+  if (request.type == "getLocalStorage"){
     // 保存されているクレデンシャル情報を取得する
     let credentialInfo = [];
     chrome.storage.local.get(["Info"], function (value) {
@@ -15,6 +15,17 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       }
       sendResponse(value.Info);
     });
+  }else if (request.type == "sendNotice"){
+    // 警告を通知する
+    let options={
+      type: "basic",
+      title: "Phishing-Protecter",
+      message: request.value,
+      iconUrl: "/images/get_started48.png",
+      priority: 1,
+      silent: true,
+    };
+    chrome.notifications.create(options);
   }
   return true;
 });

@@ -3,7 +3,11 @@ $(function(){
     //3~11行目まで追加
     let receive_data=[];
     // getLocalStorageという名前のイベントにメッセージを送る -> 宛先はbackground.js
-    chrome.runtime.sendMessage('getLocalStorage', (receive) => {
+    let request={
+        type: "getLocalStorage",
+        value: ""
+    };
+    chrome.runtime.sendMessage(request, (receive) => {
         //console.log(receive); // background.jsから返ってきた登録済み情報        
         //storageからdataだけ抜き出す
         $.each(receive, function(index, val) {
@@ -90,11 +94,18 @@ $(function(){
         }
     });
 
+    //警告を通知する
     function Alert(sentence){
         let protocol =  $(location).attr('protocol');
         if(protocol.match(/http:/) != null){
             sentence = sentence + "\nスキームがhttpです．";
         }
-        alert(sentence);
+        let request={
+            type: "sendNotice",
+            value: sentence
+        };
+        chrome.runtime.sendMessage(request, (receive) => {
+            //コールバック処理は現状不要
+        });
     }
 });
