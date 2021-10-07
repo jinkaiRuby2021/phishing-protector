@@ -9,7 +9,7 @@ This prevents your PC from getting caught on phishing sites by alerting.
 
 
 ## INSTALLATION
-You download all package of "phishing-protector" and save it on an arbitrary place.
+You download all package of "phishing-protector" and save it on an arbitrary place.  
 Then you load the file to google extensions from "Load unpackaged extensions"
 
 
