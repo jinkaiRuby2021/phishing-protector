@@ -1,15 +1,35 @@
 $(function(){
-    
-    //inputタグに文字が入力されるたびにイベントが発火
-    $("body").on('input', "input", function(event){
-        //入力値のハッシュと，保存されているクレデンシャルのハッシュを比較
 
-        //一致したらアラートを出す
-        if(false){
-           alert("保存されたクレデンシャル情報と入力値が一致しました．"); 
+    //3~11行目まで追加
+    let receive_data=[];
+    // getLocalStorageという名前のイベントにメッセージを送る -> 宛先はbackground.js
+    chrome.runtime.sendMessage('getLocalStorage', (receive) => {
+        //console.log(receive); // background.jsから返ってきた登録済み情報        
+        //storageからdataだけ抜き出す
+        $.each(receive, function(index, val) {
+            receive_data.push(val.data);
+        });
+    });
+        
+    //inputタグに文字が入力されるたびにイベントが発火
+    $("body").on('input', "input", function(event){        
+        // 18~41行目まで追加・変更
+        let inputs = [];
+        $('input:focus').each(function(index, element){            
+            //入手したデータのハッシュ化
+            inputs.push(hash(element.value));
+            //console.log("hash: " + inputs);                        
+        });
+        
+        //入力値のハッシュと，保存されているクレデンシャルのハッシュを比較
+        //一致したらアラームを出す
+        for(let i=0; i<receive_data.length; i++){
+            if(receive_data[i] == inputs){
+                //console.log(event.currentTarget.value);
+                Alert("保存されたクレデンシャル情報と入力値が一致しました．"); 
+                return false;
+            }
         }
-        //console.log(event.currentTarget.value);
-        Alert("保存されたクレデンシャル情報と入力値が一致しました．"); 
     });
 
     
