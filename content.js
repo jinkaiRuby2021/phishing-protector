@@ -12,7 +12,7 @@ $(function(){
     });
         
     //inputタグに文字が入力されるたびにイベントが発火
-    $("body").on('input', "input", function(event){        
+    $("body").on('input', "input", function(event){
         // 18~41行目まで追加・変更
         let inputs = [];
         $('input:focus').each(function(index, element){            
@@ -31,6 +31,13 @@ $(function(){
             }
         }
     });
+
+    // SHA-256のハッシュ関数
+    function hash(bace){
+        const shaobj = new jsSHA("SHA-256","TEXT");
+        shaobj.update(bace);
+        return shaobj.getHash("HEX");
+    }
 
     
     var flag = false;
