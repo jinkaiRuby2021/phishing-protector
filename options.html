@@ -3,20 +3,13 @@
   <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
-    <!-- <link rel="stylesheet" href="button.css"> -->
     <link rel="stylesheet" href="options.css">
-    <script src="resource/jquery-3.6.0.min.js"></script>
-    <script src="resource/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resource/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="resource/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resource/sha256.js"></script>
   </head>
   <body>
     <div class="container">
-      <!--
-      <div id="buttonDiv">
-      </div>
-      <div>
-        <p>Choose a different background color!</p>
-      </div>
-      -->
       <h3>Phishing Protecter #Option</h3>
       <div id="alert-div"></div>
       <h5>Add credential information to be tracked</h5>
@@ -24,8 +17,8 @@
         <form>
           <div class="form-row">
             <div class="form-group col-md-8">
-              <label for="inputData">Data<strong style="color:red;">*</strong></label>
-              <input type="text" class="form-control" id="inputData" placeholder="Data">
+              <label for="inputData">Data&nbsp;&nbsp;<strong style="color:red; font-size: 12px;">*required</strong></label>
+              <input type="text" class="form-control" id="inputData" placeholder="Data" required>
             </div>
             <div class="form-group col-md-4">
               <label for="inputTag">Tag</label>
@@ -33,13 +26,16 @@
                 <option selected>CreditCard</option>
                 <option>Name</option>
                 <option>Address</option>
-                <option>Etc</option>
+                <option>TelNumber</option>
+                <option>EmailAddress</option>
+                <option>Affiliation</option>
+                <option>etc</option>
               </select>
             </div>
           </div>
           <div class="form-group">
-            <label for="inputComment">Comment</label>
-            <input type="text" class="form-control" id="inputComment" placeholder="Comment">
+            <label for="inputComment">Comment&nbsp;&nbsp;<strong style="color:red; font-size: 12px;">*50-character limit</strong></label>
+            <input type="text" class="form-control" id="inputComment" placeholder="Comment" maxlength="50">
           </div>
           <button type="submit" class="btn btn-primary" id="addButton">Add</button>
         </form>

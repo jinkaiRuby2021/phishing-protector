@@ -31,8 +31,10 @@ i[id^="deleteButton"] {
 
 i[id^="editCompleteButton"] {
     cursor: pointer;
+    color: green;
 }
 
 i[id^="editBackButton"] {
     cursor: pointer;
+    color: gray;
 }
