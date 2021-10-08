@@ -1,10 +1,3 @@
-let color = '#3aa757';
-
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.sync.set({ color });
-  console.log('Default background color set to %cgreen', `color: ${color}`);
-});
-
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.type == "getLocalStorage"){
     // 保存されているクレデンシャル情報を取得する
@@ -21,7 +14,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       type: "basic",
       title: "Phishing-Protecter",
       message: request.value,
-      iconUrl: "/images/get_started48.png",
+      iconUrl: "/images/icon48.png",
       priority: 1,
       silent: true,
     };
