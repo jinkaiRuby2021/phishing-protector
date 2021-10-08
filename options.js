@@ -153,7 +153,7 @@ $(function(){
   // 指定されたクレデンシャル情報のセルをTableに追加する
   function addTableItem(index, val) {
     $('#tableItem' + index).append('<td class="align-middle">' + createTagBadge(val.tag) + '</td>' +
-                                   '<td class="align-middle">' + omitHashedData(val.data) + '</td>' + 
+                                   // '<td class="align-middle">' + omitHashedData(val.data) + '</td>' + 
                                    '<td class="align-middle">' + val.comment + '</td>' + 
                                    '<td class="align-middle"><i class="fas fa-edit" id="editButton'+ index +'"></i></td>' + 
                                    '<td class="align-middle"><i class="fas fa-trash" id="deleteButton'+ index +'"></i></td>');
@@ -162,7 +162,7 @@ $(function(){
   // 指定されたクレデンシャル情報のセル(編集バージョン)をTableに追加する
   function addEditItem(index, val) {
     $('#tableItem' + index).append('<td class="align-middle">' + createSelectedForm(index, val.tag) + '</td>' + 
-                                   '<td class="align-middle">' + omitHashedData(val.data) + '</td>' + 
+                                   // '<td class="align-middle">' + omitHashedData(val.data) + '</td>' + 
                                    '<td class="align-middle"><input type="text" class="form-control" id="editComment' + index + '" value=' + val.comment +' maxlength="' + maxLengthComment + '"></td>' + 
                                    '<td class="align-middle"><i class="fas fa-check" id="editCompleteButton'+ index +'"></i></td>' + 
                                    '<td class="align-middle"><i class="fas fa-times" id="editBackButton'+ index +'"></i></td>');

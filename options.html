@@ -34,8 +34,8 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="inputComment">Comment&nbsp;&nbsp;<strong style="color:red; font-size: 12px;">*50-character limit</strong></label>
-            <input type="text" class="form-control" id="inputComment" placeholder="Comment" maxlength="50">
+            <label for="inputComment">Comment&nbsp;&nbsp;<strong style="color:red; font-size: 12px;">*required & 50-character limit</strong></label>
+            <input type="text" class="form-control" id="inputComment" placeholder="Comment" maxlength="50" required>
           </div>
           <button type="submit" class="btn btn-primary" id="addButton">Add</button>
         </form>
@@ -45,9 +45,8 @@
         <table class="table table-striped table-hover" id="infoTable">
           <thead>
             <tr>
-              <th class="col-2" scope="col">tags</th>
-              <th class="col-4" scope="col">data</th>
-              <th class="col-6" scope="col">comments</th>
+              <th class="col-3" scope="col">tags</th>
+              <th class="col-9" scope="col">comments</th>
               <th scope="col"></th>
               <th scope="col"></th>
             </tr>
