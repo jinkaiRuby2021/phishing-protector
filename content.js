@@ -30,7 +30,9 @@ $(function(){
         for(let i=0; i<receive_data.length; i++){
             if(receive_data[i] == inputs){
                 //console.log(event.currentTarget.value);
-                Alert("保存されたクレデンシャル情報と入力値が一致しました．"); 
+                Alert("The stored personal information and the input values match."); 
+                //
+                //保存された個人情報と入力値が一致しました．
                 return false;
             }
         }
@@ -88,7 +90,8 @@ $(function(){
 
             //クレデンシャル情報が入力されているのを確認出来たら，アラートを表示する
             if(credential){
-                Alert("以下のクレデンシャル情報を入力しようとしています．\n"+credential);
+                Alert("You are now entering your "+credential + ".\n");
+                //以下のクレデンシャル情報を入力しようとしています
                 flag = true;
             }
         }
@@ -96,9 +99,11 @@ $(function(){
 
     //警告を通知する
     function Alert(sentence){
+        sentence = sentence + "Check the domain name and other information to make sure that the site is legitimate."
         let protocol =  $(location).attr('protocol');
         if(protocol.match(/http:/) != null){
-            sentence = sentence + "\nスキームがhttpです．";
+            sentence = "Since the communication is not encrypted, there is a possibility of personal information leakage. Please refrain from entering personal information.";
+            //暗号化されていない通信なので，個人情報漏えいの可能性があります．
         }
         let request={
             type: "sendNotice",
