@@ -1,5 +1,8 @@
 # phishing-protecter
 
+<img width=20% alt="icon" src="https://user-images.githubusercontent.com/52380218/136557208-e5fda7bd-0beb-4bee-826f-8db932712aee.png">
+
+
 ## Constructions protecting you from phishing sites
 Is your PC really safe? Are you visitting bad sites?
 
@@ -24,11 +27,17 @@ This Google extension has **three functions**.
 ### Personal Information Entry Event Warning
 When you enter personal information, this system display warning to encourage confirmation that sites you visit is wheather legitimate or phishing.
 
+<img width=60% alt="first feature" src="https://user-images.githubusercontent.com/52380218/136556449-eeda9ad2-5e97-41bd-9a5a-91c88431bbb1.gif">
+
 ### Registered Personal Information Entry Warning
 If you set up option in advance, this show alert by matching contents of option and what you are typing.
 
+<img width=60% alt="second feature" src="https://user-images.githubusercontent.com/52380218/136556672-482ad083-e16d-4e76-b4a0-aecd779c0dfa.gif">
+
 ### SSL Not Supported Web Site Warning
 If sites you visit don't support ssl, this show alert.
+
+<img width=60% alt="third feature" src="https://user-images.githubusercontent.com/52380218/136556751-61baac4d-040d-4b51-bed1-c1b8a9184062.gif">
 
 ## Way to Use
 Basically, no configuration by you is required.
@@ -51,3 +60,6 @@ When you are done, click on the "Add" button to complete the registration, and t
   - Each piece of information can be **edited** or **deleted**.
 
 <img width=60% alt="options" src="https://user-images.githubusercontent.com/52380218/136532864-bbb37e6a-555f-440f-94b4-92e187a704fd.png" style="margin-left: auto">
+
+## License
+The source code is licensed MIT. The website content is licensed CC BY 4.0, see LICENSE.
