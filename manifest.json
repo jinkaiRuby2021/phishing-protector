@@ -3,6 +3,18 @@
   "description": "Build an Extension!",
   "version": "1.0",
   "manifest_version": 3,
+  "content_scripts":[
+    {
+      "run_at":"document_end",
+      "matches":["<all_urls>"],
+      "js": [
+        "resource/jquery-3.6.0.min.js",
+        "resource/sha256.js",
+        "content.js"
+      ],
+      "all_frames": true
+    }
+  ],
   "background": {
     "service_worker": "background.js"
   },
