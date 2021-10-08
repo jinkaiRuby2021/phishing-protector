@@ -12,7 +12,7 @@ This prevents your PC from getting caught on phishing sites by alerting.
    - Or download the zip file directly from this site and extract it.
 2. Then you load the file to google extensions from **"Load unpackaged"**.
 
-<img width=60% alt="install" src="https://user-images.githubusercontent.com/52380218/136494887-8bbeed74-fc83-43ee-ab9e-bb252673f94e.png">
+<img width=60% alt="install" src="https://user-images.githubusercontent.com/52380218/136532797-f14b3a10-5986-416f-927b-f4f3d9839813.png">
 
 
 ## FEATURES
@@ -50,4 +50,4 @@ When you open **options screen**, you can check the **three input forms**("Data"
 When you are done, click on the "Add" button to complete the registration, and the table at the bottom of the input form will display the information you have entered.
   - Each piece of information can be **edited** or **deleted**.
 
-<img width=60% alt="options" src="https://user-images.githubusercontent.com/52380218/136494984-46260bd7-7c95-45ef-9c70-e22b0b415b4d.png" style="margin-left: auto">
+<img width=60% alt="options" src="https://user-images.githubusercontent.com/52380218/136532864-bbb37e6a-555f-440f-94b4-92e187a704fd.png" style="margin-left: auto">
