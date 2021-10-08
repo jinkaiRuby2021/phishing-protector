@@ -1,4 +1,5 @@
 $(function(){
+    var flag = false;
 
     //3~11行目まで追加
     let receive_data=[];
@@ -17,25 +18,27 @@ $(function(){
         
     //inputタグに文字が入力されるたびにイベントが発火
     $("body").on('input', "input", function(event){
-        // 18~41行目まで追加・変更
-        let inputs = [];
-        $('input:focus').each(function(index, element){            
-            //入手したデータのハッシュ化
-            inputs.push(hash(element.value));
-            //console.log("hash: " + inputs);                        
-        });
-        
-        //入力値のハッシュと，保存されているクレデンシャルのハッシュを比較
-        //一致したらアラームを出す
-        for(let i=0; i<receive_data.length; i++){
-            if(receive_data[i] == inputs){
-                //console.log(event.currentTarget.value);
-                Alert("The stored personal information and the input values match."); 
-                //
-                //保存された個人情報と入力値が一致しました．
-                return false;
+        if (!flag){
+            let inputs = [];
+            $('input:focus').each(function(index, element){            
+                //入手したデータのハッシュ化
+                inputs.push(hash(element.value));
+                //console.log("hash: " + inputs);                        
+            });
+            
+            //入力値のハッシュと，保存されているクレデンシャルのハッシュを比較
+            //一致したらアラームを出す
+            for(let i=0; i<receive_data.length; i++){
+                if(receive_data[i] == inputs){
+                    //console.log(event.currentTarget.value);
+                    Alert("The stored personal information and the input values match."); 
+                    //保存された個人情報と入力値が一致しました．
+                    flag = true;
+                    return false;
+                }
             }
         }
+        
     });
 
     // SHA-256のハッシュ関数
@@ -46,7 +49,6 @@ $(function(){
     }
 
     
-    var flag = false;
     //inputタグに文字が入力され，フォーカスが外れたタイミングでイベントが発火
     $("body").on('change', "input", function(event) {
         //アラートは一つのページで一度しか表示しない
